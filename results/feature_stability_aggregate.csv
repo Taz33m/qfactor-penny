@@ -1,0 +1,9 @@
+selected_feature,selected_for_model,selected_count,calendar_heavy_rate,mean_cross_sectional_std_by_date,mean_time_series_std_by_ticker,mean_variance_ratio,mean_missing_rate
+month_cos,learned_models,4,1.0,0.0,0.6346985729179919,0.0,0.0
+weekday_cos,learned_models,3,1.0,0.0,0.661842317705884,0.0,0.0
+month_sin,learned_models,1,1.0,0.0,0.6914196063810635,0.0,0.0
+relative_strength_20d,naive_momentum,4,0.0,0.02812508519195575,0.02695030595421585,1.0918848810924253,0.0
+ret_1d,learned_models,4,0.0,0.0069885862786511,0.011797629289824925,0.3517642141866062,0.0
+volume_ratio_20d,learned_models,2,0.0,0.26600055127704586,0.4568179959454842,0.33904694159046633,0.0
+ret_20d,learned_models,1,0.0,0.026319037658526,0.0334847476310985,0.6177972215776363,0.0
+vol_20d,learned_models,1,0.0,0.0018636408089963,0.0032004072882489,0.3390891722345565,0.0

@@ -1,0 +1,9 @@
+model,status,rows,total_constant_score_dates,total_nan_scores,diagnostics_available_rows
+logistic_regression,success,4,0,0,0
+naive_momentum,success,4,0,0,0
+pennylane_qnn,success,4,0,0,4
+random_forest,success,4,0,0,0
+rbf_svm,success,4,0,0,0
+ridge_linear,success,4,0,0,0
+small_mlp,success,4,0,0,0
+xgboost,success,4,0,0,0

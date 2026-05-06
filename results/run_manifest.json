@@ -1,0 +1,67 @@
+{
+  "config": {
+    "dataset_path": "data/qfactor_dataset.csv",
+    "feature_count": 4,
+    "feature_selection": {
+      "mode": "standard"
+    },
+    "max_splits": 4,
+    "min_train_dates": 36,
+    "mlp_hidden_units": 4,
+    "purge_trading_days": 5,
+    "qnn_epochs": 10,
+    "qnn_learning_rate": 0.08,
+    "qnn_patience": 3,
+    "qnn_shot_sensitivity_samples": 8,
+    "qnn_shot_sensitivity_shots": 1024,
+    "random_state": 42,
+    "results_dir": "results",
+    "seeds": [
+      42
+    ],
+    "test_months": 1,
+    "transaction_cost": 0.0005,
+    "validation_dates": 6
+  },
+  "config_hash": "7ba93f5047f7c458379d2f0d8ec46bf0080b08395ee1535e97c00d69b6cf6000",
+  "config_path": "configs/mvp.yaml",
+  "dataset_hash": "1e2dd6ecabac15151c6861d9dca6dac40aa5a449cf7a6f4603156d93a66dc07d",
+  "dataset_path": "data/qfactor_dataset.csv",
+  "dependency_versions": {
+    "PennyLane": "0.42.3",
+    "matplotlib": "3.10.9",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "scipy": "1.15.3",
+    "torch": null
+  },
+  "feature_selection": {
+    "mode": "standard"
+  },
+  "git_sha": null,
+  "max_splits": 4,
+  "model_list": [
+    "logistic_regression",
+    "naive_momentum",
+    "pennylane_qnn",
+    "random_forest",
+    "rbf_svm",
+    "ridge_linear",
+    "small_mlp",
+    "xgboost"
+  ],
+  "output_directory": "results",
+  "platform": "macOS-15.4.1-arm64-arm-64bit",
+  "prepared_row_count": 4475,
+  "python_executable": ".venv/bin/python",
+  "python_version": "3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+  "random_seeds": [
+    42
+  ],
+  "rebalance_date_count": 409,
+  "run_end_timestamp": "2026-05-06T08:54:50.307408+00:00",
+  "run_start_timestamp": "2026-05-06T08:54:06.395437+00:00",
+  "runtime_seconds": 43.911971,
+  "synthetic_flag": false
+}

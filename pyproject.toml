@@ -1,0 +1,23 @@
+[project]
+name = "qfactor-penny"
+version = "0.1.0"
+description = "A leakage-aware PennyLane benchmark for trainable quantum circuits in cross-sectional sector ETF ranking."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "Tazeem Mahashin" }
+]
+dependencies = [
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "pennylane",
+  "matplotlib",
+  "xgboost"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

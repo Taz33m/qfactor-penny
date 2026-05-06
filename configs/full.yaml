@@ -1,0 +1,22 @@
+{
+  "dataset_path": "data/qfactor_dataset.csv",
+  "results_dir": "results_full",
+  "min_train_dates": 36,
+  "validation_dates": 6,
+  "purge_trading_days": 5,
+  "test_months": 1,
+  "max_splits": 12,
+  "feature_count": 4,
+  "qnn_epochs": 10,
+  "qnn_learning_rate": 0.08,
+  "qnn_patience": 3,
+  "qnn_shot_sensitivity_samples": 8,
+  "qnn_shot_sensitivity_shots": 1024,
+  "mlp_hidden_units": 4,
+  "transaction_cost": 0.0005,
+  "random_state": 42,
+  "seeds": [42, 7],
+  "feature_selection": {
+    "mode": "standard"
+  }
+}

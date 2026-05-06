@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+.tts-venv/
+*.mp4
+renders/
+data/*.csv
+
+# Keep current paper-backed benchmark artifacts in git, but not local caches
+# or stale exploratory full-run outputs.
+results/.cache/
+results_cross_sectional_mvp/.cache/
+results_full/
+results_cross_sectional/
+mktmind-qtm/
