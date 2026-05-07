@@ -12,8 +12,6 @@
   <a href="https://youtu.be/jAKgiCHIuVY">Demo Video</a>
   ·
   <a href="paper/qfactor_penny_paper.pdf">Paper PDF</a>
-  ·
-  <a href="paper/qfactor_penny_paper.md">Markdown Paper</a>
 </p>
 
 <p align="center">
@@ -27,6 +25,12 @@
 <p align="center">
   <a href="https://youtu.be/jAKgiCHIuVY">
     <img src="https://img.youtube.com/vi/jAKgiCHIuVY/maxresdefault.jpg" alt="QFactor-Penny demo video thumbnail" width="860" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="paper/qfactor_penny_paper.pdf">
+    <img src="assets/paper-thumbnail.png" alt="QFactor-Penny paper thumbnail" width="520" />
   </a>
 </p>
 
@@ -66,6 +70,29 @@ Finance QML benchmarks can look impressive if leakage, overlapping labels, weak 
 | Turnover | 0.5521 | 0.6562 |
 
 The diagnostic improved the mechanics of the QNN scoring behavior, but the investment-style signal remained weak. Precision@3 stayed near the random baseline of `3 / 11 = 0.2727`, rank IC remained negative, and no net alpha versus SPY survived transaction costs.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A["Frozen sector ETF data"] --> B["prepare_data"]
+    B --> C["Non-overlapping 5-day rebalance panel"]
+    C --> D["Expanding walk-forward split builder"]
+    D --> E["Train-only feature selection and scaling"]
+    E --> F1["Classical baselines"]
+    E --> F2["4-feature / 4-qubit PennyLane QNN"]
+    F1 --> G["Scores for all 11 sector ETFs"]
+    F2 --> G
+    G --> H["Model rank positions"]
+    H --> I["Long equal-weight top 3 sectors"]
+    I --> J["Portfolio accounting with costs"]
+    G --> K["Prediction, split, status, feature, QNN audits"]
+    J --> L["Results summary, figures, paper"]
+    K --> L
+
+    M["SPY benchmark/reference"] --> B
+    M --> J
+```
 
 ## Methodology
 
@@ -199,16 +226,9 @@ The report files `results/results_summary.md` and `results_cross_sectional_mvp/r
 - Paper title: **QFactor-Penny: A Reproducible Benchmark of Trainable Quantum Circuits for Cross-Sectional Sector Return Ranking**
 - Subtitle: **When Small QNNs Fail to Rank Assets Under Walk-Forward Validation**
 - PDF: [`paper/qfactor_penny_paper.pdf`](paper/qfactor_penny_paper.pdf)
-- Markdown: [`paper/qfactor_penny_paper.md`](paper/qfactor_penny_paper.md)
 - Demo video: [youtu.be/jAKgiCHIuVY](https://youtu.be/jAKgiCHIuVY)
 
 The video is a short companion explainer. It walks through the task, the QNN constant-score collapse, the cross-sectional-aware diagnostic, and the negative research conclusion.
-
-<p align="center">
-  <a href="paper/qfactor_penny_paper.pdf">
-    <img src="assets/paper-thumbnail.png" alt="QFactor-Penny paper thumbnail" width="520" />
-  </a>
-</p>
 
 ## What This Project Does Not Claim
 
