@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pandas as pd
 
+LOCAL_PATH_MARKER = "/" + "Users/"
+
 
 def test_paper_artifact_uses_final_failure_mode_framing():
     paper = Path("paper/qfactor_penny_paper.md")
@@ -29,7 +31,7 @@ def test_paper_artifact_uses_final_failure_mode_framing():
     assert text.count(key_sentence) >= 3
     assert ("final_" + "interview_brief") not in text
     assert ("Interview" + " Brief") not in text
-    assert "/Users/" not in text
+    assert LOCAL_PATH_MARKER not in text
 
 
 def test_latex_paper_artifact_exists_and_preserves_claim_discipline():
@@ -42,11 +44,14 @@ def test_latex_paper_artifact_exists_and_preserves_claim_discipline():
     assert "\\\\[1.25em]" in text
     assert "Return and alpha values are mean five-trading-day rebalance-period values, not annualized returns." in text
     assert "not real-hardware validation" in text
+    assert "\\section{IBM Quantum Hardware Robustness Audit}" in text
+    assert "ibm\\_rensselaer" in text
+    assert "HAL error \\texttt{9604}" in text
     assert "no statistical-significance claim, no quantum-advantage claim, and no trading-edge claim" in text
     assert "3/11=0.2727" in text
     assert "qnn\\_failure\\_audit.csv" in text
     assert "\\bibliography{references}" in text
-    assert "/Users/" not in text
+    assert LOCAL_PATH_MARKER not in text
 
 
 def test_paper_metrics_match_current_variant_comparison():
@@ -75,6 +80,7 @@ def test_paper_referenced_figures_exist_and_are_relative():
         "results/figures/qnn_shot_sensitivity.png",
         "results_cross_sectional_mvp/figures/model_rank_ic.png",
         "results_cross_sectional_mvp/figures/qnn_shot_sensitivity.png",
+        "results_hardware/figures/hardware_score_scatter.png",
     ]
     for figure_path in figure_paths:
         assert figure_path in text
@@ -83,8 +89,8 @@ def test_paper_referenced_figures_exist_and_are_relative():
 
 def test_latex_paper_references_existing_figures():
     text = Path("paper/qfactor_penny_paper.tex").read_text(encoding="utf-8")
-    assert "\\graphicspath{{../results/figures/}{../results_cross_sectional_mvp/figures/}}" in text
-    for figure in ["model_rank_ic.png", "turnover_vs_return.png", "qnn_shot_sensitivity.png"]:
+    assert "\\graphicspath{{../results/figures/}{../results_cross_sectional_mvp/figures/}{../results_hardware/figures/}}" in text
+    for figure in ["model_rank_ic.png", "turnover_vs_return.png", "qnn_shot_sensitivity.png", "hardware_score_scatter.png"]:
         assert figure in text
 
 
@@ -109,6 +115,8 @@ def test_reviewer_checklist_maps_claims_to_artifacts():
     assert "QNN rank IC remains negative (`-0.0494`)" in text
     assert "precision@3 remains near random (`0.2708` vs random `3 / 11 = 0.2727`)" in text
     assert "1024-shot sensitivity is simulator sampling after analytic training, not real-hardware validation" in text
-    assert "4 MVP splits, one seed, no real hardware run, no statistical-significance claim" in text
+    assert "Frozen-QNN hardware inference used `ibm_rensselaer`, 11 samples, 100 shots" in text
+    assert "IBM HAL error `9604`" in text
+    assert "4 MVP splits, one seed, only a small inference-only hardware audit, no statistical-significance claim" in text
     assert "does not support a quantum-advantage or trading-edge claim" in text
-    assert "/Users/" not in text
+    assert LOCAL_PATH_MARKER not in text

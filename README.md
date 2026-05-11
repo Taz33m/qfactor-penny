@@ -146,8 +146,10 @@ tests/                          Unit and smoke tests
 paper/                          Markdown, LaTeX, PDF, and bibliography
 results/                        Current standard MVP artifact outputs
 results_cross_sectional_mvp/    Current cross-sectional-aware MVP artifact outputs
+results_hardware/               Optional frozen-QNN hardware audit outputs
 assets/                         README logo and paper thumbnail
 requirements.txt                Runtime/test requirements
+requirements-hardware.txt       Optional Qiskit/IBM Runtime requirements
 requirements.lock.txt           Local environment lock snapshot
 ```
 
@@ -191,6 +193,70 @@ Run tests:
 ```bash
 .venv/bin/python -m pytest
 ```
+
+## Optional IBM Quantum Hardware Audit
+
+QFactor-Penny includes an opt-in IBM Quantum audit path for studying simulator-to-hardware degradation. This path is inference-only: it freezes a small trained QNN subset, transpiles the matching Qiskit circuits for an IBM backend, and compares analytic scores against hardware Estimator outputs. It is a systems diagnostic, not evidence of quantum advantage, tradable alpha, or real-hardware validation of a finance signal.
+
+The current v1 hardware audit used RPI's IBM Quantum System One backend through the `General-dedicated` instance. It did not retrain the QNN and did not alter the benchmark conclusions.
+
+| Hardware diagnostic | Result |
+| --- | ---: |
+| Backend | `ibm_rensselaer` |
+| Backend size | 127 qubits |
+| Instance | `General-dedicated` |
+| Samples | 11 frozen QNN inference samples |
+| Shots | 100 |
+| Optimization / resilience | level 0 / level 0 |
+| Mean circuit depth | 8.0000 -> 26.6364 |
+| Mean two-qubit gates | 4.0000 -> 8.9091 |
+| Mean SWAP count | 0.0000 |
+| Analytic vs hardware score correlation | -0.0901 |
+| Mean absolute score difference | 0.3857 |
+| Pairwise ranking flip rate | 0.4630 |
+| Top-3 overlap | 0.3333 |
+
+Analytic top 3 was `XLP, XLV, XLC`; hardware top 3 was `XLK, XLU, XLP`. A first batched optimization-level-1 Estimator attempt failed with IBM HAL error `9604`; the conservative optimization-level-0 run succeeded. This is evidence of hardware execution fragility, not evidence of a useful finance signal.
+
+Install optional hardware dependencies:
+
+```bash
+.venv/bin/python -m pip install -r requirements-hardware.txt
+```
+
+Rotate any exposed IBM Quantum API key before use, then export the fresh token locally:
+
+```bash
+read -rsp "IBM Quantum token: " QISKIT_IBM_TOKEN
+export QISKIT_IBM_TOKEN
+export QISKIT_IBM_INSTANCE="General-dedicated"
+```
+
+Export a frozen cross-sectional-aware QNN subset and run the audit:
+
+```bash
+.venv/bin/python -m qfactor_penny.export_qnn_hardware_subset \
+  --config configs/cross_sectional_mvp.yaml \
+  --output results_hardware/frozen_qnn_subset.json
+
+.venv/bin/python -m qfactor_penny.ibm_transpile_audit \
+  --input results_hardware/frozen_qnn_subset.json \
+  --output results_hardware/ibm_transpilation_audit.csv \
+  --backend ibm_rensselaer
+
+.venv/bin/python -m qfactor_penny.ibm_hardware_inference \
+  --input results_hardware/frozen_qnn_subset.json \
+  --output results_hardware/ibm_hardware_scores.csv \
+  --backend ibm_rensselaer \
+  --optimization-level 0 \
+  --resilience-levels 0 \
+  --precision 0.1
+
+.venv/bin/python -m qfactor_penny.make_hardware_report \
+  --input-dir results_hardware
+```
+
+The hardware report records backend/transpilation details, Estimator settings, score drift, ranking flips, top-3 overlap, diagnostic figures, and `hardware_run_manifest.json`. Missing Qiskit packages or credentials are reported as skipped status rows instead of crashing the workflow.
 
 ## Configs
 

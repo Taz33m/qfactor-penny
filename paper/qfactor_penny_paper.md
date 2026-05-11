@@ -172,6 +172,7 @@ QFactor-Penny is designed to make experiment state auditable. Each benchmark run
 | `qnn_failure_audit.csv` | Summarizes QNN constant-score groups, undefined metrics, and selected features |
 | `quantum_diagnostics.csv` | Records qubits, layers, parameter count, train/inference time, and shot-sensitivity diagnostics |
 | `experimental_variant_comparison.csv` | Compares standard and cross-sectional-aware feature-selection variants |
+| `results_hardware/` | Contains optional frozen-QNN IBM hardware audit CSVs, manifest, summary, and diagnostic figure |
 
 Generated figures are available in:
 
@@ -184,17 +185,44 @@ Generated figures are available in:
 - `results/figures/qnn_shot_sensitivity.png`
 - `results_cross_sectional_mvp/figures/model_rank_ic.png`
 - `results_cross_sectional_mvp/figures/qnn_shot_sensitivity.png`
+- `results_hardware/figures/hardware_score_scatter.png`
 
 ## 9. Limitations
 
-This benchmark is not a trading system and is not investment advice. The current MVP summaries use only 4 walk-forward splits and one seed (`42`) for fast iteration. The tradable universe is small: 11 sector ETFs. Financial labels are noisy, sector returns are path dependent, and five-trading-day horizons can be unstable. The QNN is trained on an analytic simulator rather than real hardware, and the 1024-shot experiment is inference-only simulator sampling, not real-hardware validation. The reported cross-sectional-aware variant is diagnostic, not an optimized production feature pipeline.
+This benchmark is not a trading system and is not investment advice. The current MVP summaries use only 4 walk-forward splits and one seed (`42`) for fast iteration. The tradable universe is small: 11 sector ETFs. Financial labels are noisy, sector returns are path dependent, and five-trading-day horizons can be unstable. The main benchmark trains the QNN on an analytic simulator, and the 1024-shot experiment is inference-only simulator sampling, not real-hardware validation. The IBM hardware appendix is also inference-only: it runs a small frozen-QNN subset on hardware as a systems robustness audit, not as real-hardware validation of a finance signal. The reported cross-sectional-aware variant is diagnostic, not an optimized production feature pipeline.
 
 The paper makes no statistical-significance claim, no quantum-advantage claim, and no trading-edge claim. Most importantly, a cleaner diagnostic result should not be overread. The cross-sectional-aware QNN removed constant-score collapse, but it did not create stable positive rank IC or post-cost alpha.
 
 ## 10. Future Work
 
-Future work should run the full benchmark across more splits and seeds, expand robustness checks, and report confidence intervals for ranking and portfolio metrics. A larger universe could test whether QNN fragility changes with a broader cross-section, though this would also increase the need for careful multiple-testing controls. Additional QNN variants should be introduced only as pre-registered experimental variants, not as post-hoc tuning to make results look better. Real-hardware inference could be added later as a separate experiment, but no real-hardware results are reported in this paper.
+Future work should run the full benchmark across more splits and seeds, expand robustness checks, and report confidence intervals for ranking and portfolio metrics. A larger universe could test whether QNN fragility changes with a broader cross-section, though this would also increase the need for careful multiple-testing controls. Additional QNN variants should be introduced only as pre-registered experimental variants, not as post-hoc tuning to make results look better. A future hardware pass could repeat the exact frozen-QNN audit with a rotated token, higher shot budget, and pre-specified settings, but it should remain a robustness diagnostic unless substantially stronger evidence exists.
 
 ## 11. Conclusion
 
 QFactor-Penny demonstrates that small PennyLane QNNs can be evaluated rigorously in a financial ranking setting, but the tested QNN did not produce stable positive ranking behavior. The most informative result was a failure mode: standard feature selection sometimes chose calendar-heavy inputs with weak cross-sectional dispersion, leading to QNN constant-score collapse. Cross-sectional-aware feature selection removed the observed QNN constant-score collapse, but QNN rank IC remained negative, precision@3 stayed near random, and no net alpha versus SPY survived transaction costs. These results do not support a quantum-advantage or trading-edge claim. Instead, they support the value of leakage-aware QML benchmarks that expose model fragility before making performance claims.
+
+## Appendix A. IBM Quantum Hardware Robustness Audit
+
+After the simulator benchmark, a small frozen-QNN subset was executed on RPI's IBM Quantum System One backend `ibm_rensselaer` through the `General-dedicated` instance. This appendix is a hardware robustness audit, not a new model comparison: the QNN was not retrained on hardware, the benchmark conclusions were not changed, and the run does not validate a finance signal on real hardware.
+
+| Hardware diagnostic | Result |
+| --- | ---: |
+| Backend | `ibm_rensselaer` |
+| Backend size | 127 qubits |
+| Instance | `General-dedicated` |
+| Samples | 11 frozen QNN inference samples |
+| Shots | 100 |
+| Optimization / resilience | level 0 / level 0 |
+| Mean depth | 8.0000 -> 26.6364 |
+| Mean two-qubit gates | 4.0000 -> 8.9091 |
+| Mean SWAP count | 0.0000 |
+| Analytic vs hardware score correlation | -0.0901 |
+| Mean absolute score difference | 0.3857 |
+| Pairwise ranking flip rate | 0.4630 |
+| Top-3 overlap | 0.3333 |
+
+The analytic top 3 was `XLP, XLV, XLC`; the hardware top 3 was `XLK, XLU, XLP`. The mismatch is consistent with a robustness reading: finite-shot hardware execution produced score drift and ranking instability relative to analytic simulation. It should not be interpreted as outperformance, tradable alpha, or quantum advantage.
+
+A first batched optimization-level-1 Estimator attempt failed with IBM HAL error `9604` (`Failed to set configuration on HAL components`). The conservative optimization-level-0 execution succeeded and is treated as the canonical v1 hardware artifact. The failure is documented because runtime/HAL behavior is part of the simulator-to-hardware gap this project is meant to expose.
+
+![IBM hardware scores versus analytic simulation](results_hardware/figures/hardware_score_scatter.png)

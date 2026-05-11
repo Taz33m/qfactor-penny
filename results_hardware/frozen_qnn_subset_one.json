@@ -1,0 +1,166 @@
+{
+  "claim_discipline": "Hardware execution is a systems diagnostic only; it does not support quantum-advantage, trading-edge, or real-hardware validated finance-signal claims.",
+  "config_hash": "72d81de7f0255f7bed98dd57f294d907c622ad38c2692b99afc723700be9d94e",
+  "created_at_utc": "2026-05-09T19:15:30.475233+00:00",
+  "dataset_hash": "1e2dd6ecabac15151c6861d9dca6dac40aa5a449cf7a6f4603156d93a66dc07d",
+  "dataset_path": "data/qfactor_dataset.csv",
+  "feature_selection": {
+    "min_cross_sectional_std_quantile": 0.25,
+    "mode": "cross_sectional_aware"
+  },
+  "max_splits": 4,
+  "purpose": "inference-only IBM Quantum hardware robustness audit",
+  "qnn_architecture": {
+    "ansatz": "one StronglyEntanglingLayers layer",
+    "encoding": "RY angle encoding",
+    "feature_count": 4,
+    "framework": "PennyLane training, Qiskit hardware export",
+    "hardware_mode": "inference only",
+    "n_qubits": 4,
+    "observable": "PauliZ on qubit 0 plus classical bias",
+    "training_mode": "analytic default.qubit"
+  },
+  "qnn_models": [
+    {
+      "best_validation_loss": 0.7180012297611662,
+      "bias": -0.4236579695998152,
+      "epochs_ran": 10,
+      "model_id": "split_00_2018-12__seed_42",
+      "n_layers": 1,
+      "n_qubits": 4,
+      "samples": [
+        {
+          "analytic_score": -0.6197011641087729,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0003958434627452,
+          "feature_values": [
+            -2.190497077747381,
+            -2.197287158830197,
+            1.115896086503062,
+            -0.27981787106516753
+          ],
+          "forward_return_5d": -0.0113657635562893,
+          "is_synthetic": false,
+          "label": null,
+          "sample_index": 0,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLB"
+        }
+      ],
+      "seed": 42,
+      "selected_features": [
+        "ret_1d",
+        "ret_20d",
+        "volume_ratio_20d",
+        "relative_strength_20d"
+      ],
+      "split_id": "split_00_2018-12",
+      "test_rows": 44,
+      "train_rows": 216,
+      "trainable_parameter_count": 13,
+      "validation_rows": 30,
+      "weights": [
+        [
+          [
+            0.015235853989629369,
+            -0.05199920530589946,
+            0.037522559792284214
+          ],
+          [
+            0.30844955520445183,
+            0.3853675544662994,
+            -0.06510897534317117
+          ],
+          [
+            0.3101904572055736,
+            -0.5138206426007411,
+            -0.0008400578715365498
+          ],
+          [
+            0.6385237671412587,
+            0.014581050194469355,
+            0.03888959677114912
+          ]
+        ]
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "source_config_path": "configs/cross_sectional_mvp.yaml",
+  "split_audit_rows": [
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 36,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_00_2018-12",
+      "test_end": "2018-12-31",
+      "test_start": "2018-12-07",
+      "train_end": "2018-10-10",
+      "train_last_forward_end": "2018-10-17",
+      "train_purge_trading_days": 5,
+      "train_start": "2018-01-31",
+      "validation_end": "2018-11-21",
+      "validation_last_forward_end": "2018-11-29",
+      "validation_purge_trading_days": 6,
+      "validation_start": "2018-10-24"
+    },
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 40,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_01_2019-01",
+      "test_end": "2019-01-30",
+      "test_start": "2019-01-08",
+      "train_end": "2018-11-07",
+      "train_last_forward_end": "2018-11-14",
+      "train_purge_trading_days": 5,
+      "train_start": "2018-01-31",
+      "validation_end": "2018-12-21",
+      "validation_last_forward_end": "2018-12-31",
+      "validation_purge_trading_days": 6,
+      "validation_start": "2018-11-21"
+    },
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 44,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_02_2019-02",
+      "test_end": "2019-02-28",
+      "test_start": "2019-02-06",
+      "train_end": "2018-12-07",
+      "train_last_forward_end": "2018-12-14",
+      "train_purge_trading_days": 5,
+      "train_start": "2018-01-31",
+      "validation_end": "2019-01-23",
+      "validation_last_forward_end": "2019-01-30",
+      "validation_purge_trading_days": 5,
+      "validation_start": "2018-12-21"
+    },
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 48,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_03_2019-03",
+      "test_end": "2019-03-28",
+      "test_start": "2019-03-07",
+      "train_end": "2019-01-08",
+      "train_last_forward_end": "2019-01-15",
+      "train_purge_trading_days": 6,
+      "train_start": "2018-01-31",
+      "validation_end": "2019-02-21",
+      "validation_last_forward_end": "2019-02-28",
+      "validation_purge_trading_days": 5,
+      "validation_start": "2019-01-23"
+    }
+  ],
+  "hardware_subset_note": "single-sample retry after ibm_rensselaer HAL 9604"
+}

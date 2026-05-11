@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-05-11T21:19:51.983615+00:00",
+  "artifact_type": "ibm_quantum_hardware_robustness_audit",
+  "output_dir": "results_hardware",
+  "instance_name": "General-dedicated",
+  "claim_guardrail": "Inference-only systems diagnostic; no quantum advantage, trading edge, or real-hardware finance-signal validation claim.",
+  "backend_names": [
+    "ibm_rensselaer"
+  ],
+  "job_ids": [
+    "d812tso0bvlc73d0hs4g"
+  ],
+  "calibration_timestamps": [
+    "2026-05-11 13:58:02-04:00"
+  ],
+  "shots": [
+    100
+  ],
+  "requested_precision": [
+    0.1
+  ],
+  "optimization_levels": [
+    0
+  ],
+  "resilience_levels": [
+    0
+  ],
+  "python_version": "3.10.5",
+  "dependency_versions": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "qiskit": "2.4.1",
+    "qiskit-ibm-runtime": "0.46.1",
+    "pennylane": "0.42.3",
+    "scipy": "1.15.3",
+    "matplotlib": "3.10.9"
+  },
+  "artifact_hashes": {
+    "frozen_qnn_subset.json": "da7789546a246e6c125530033332d10856fadc6f4d0f954a0b73c333b7d8007b",
+    "ibm_transpilation_audit.csv": "5e2ef15f4f74521384b15fe164b8b1ab532a6950cfdaf375bb23bc2bd576b236",
+    "ibm_hardware_scores.csv": "dd56736da9cc63d97dfbe5d9be6a07a12ee4805f354237a33127baa06f15f4c0",
+    "figures/hardware_score_scatter.png": "b0dc103dc22593ef663cd50171887455853a2c99807c1bc76e092d2ff57b56b8"
+  },
+  "transpilation_summary": {
+    "rows": 11,
+    "pre_depth_mean": 8.0,
+    "post_depth_mean": 26.636363636363637,
+    "pre_two_qubit_gate_count_mean": 4.0,
+    "post_two_qubit_gate_count_mean": 8.909090909090908,
+    "post_swap_count_mean": 0.0
+  },
+  "hardware_score_summary": [
+    {
+      "backend_name": "ibm_rensselaer",
+      "resilience_level": 0,
+      "samples": 11,
+      "score_correlation": -0.0901305831578186,
+      "mean_abs_score_diff": 0.3857407356374462,
+      "pairwise_ranking_flip_rate": 0.46296296296296297,
+      "mean_top3_overlap": 0.3333333333333333
+    }
+  ],
+  "top3_comparison": [
+    {
+      "model_id": "split_00_2018-12__seed_42",
+      "date": "2018-12-07",
+      "analytic_top3": [
+        "XLP",
+        "XLV",
+        "XLC"
+      ],
+      "hardware_top3": [
+        "XLK",
+        "XLU",
+        "XLP"
+      ],
+      "top3_overlap": 0.3333333333333333
+    }
+  ],
+  "execution_notes": [
+    {
+      "event": "initial_batched_estimator_attempt",
+      "status": "failed",
+      "backend_name": "ibm_rensselaer",
+      "optimization_level": 1,
+      "error_type": "RuntimeJobFailureError",
+      "error_code": "9604",
+      "interpretation": "Batched optimization-level-1 Estimator execution failed with IBM HAL configuration error; conservative optimization-level-0 execution succeeded."
+    }
+  ]
+}

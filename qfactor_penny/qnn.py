@@ -11,6 +11,8 @@ import numpy as np
 @dataclass
 class QNNResult:
     score: np.ndarray
+    weights: np.ndarray
+    bias: float
     train_seconds: float
     inference_seconds: float
     parameter_count: int
@@ -141,6 +143,8 @@ def fit_predict_qnn(
             flip_rate = float(flipped_pairs / total_pairs)
     return QNNResult(
         score=score,
+        weights=np.asarray(best_weights, dtype=float),
+        bias=float(best_bias),
         train_seconds=train_seconds,
         inference_seconds=inference_seconds,
         parameter_count=int(np.prod(shape) + 1),

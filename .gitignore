@@ -6,6 +6,8 @@ __pycache__/
 .ruff_cache/
 .venv/
 .tts-venv/
+.env
+.env.local
 *.mp4
 renders/
 data/*.csv
@@ -14,6 +16,7 @@ data/*.csv
 # or stale exploratory full-run outputs.
 results/.cache/
 results_cross_sectional_mvp/.cache/
+results_hardware/.cache/
 results_full/
 results_cross_sectional/
 mktmind-qtm/

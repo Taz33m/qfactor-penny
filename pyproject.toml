@@ -17,6 +17,12 @@ dependencies = [
   "xgboost"
 ]
 
+[project.optional-dependencies]
+hardware = [
+  "qiskit",
+  "qiskit-ibm-runtime"
+]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["."]

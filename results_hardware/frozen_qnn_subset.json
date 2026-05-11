@@ -1,0 +1,345 @@
+{
+  "claim_discipline": "Hardware execution is a systems diagnostic only; it does not support quantum-advantage, trading-edge, or real-hardware validated finance-signal claims.",
+  "config_hash": "72d81de7f0255f7bed98dd57f294d907c622ad38c2692b99afc723700be9d94e",
+  "created_at_utc": "2026-05-09T19:15:30.475233+00:00",
+  "dataset_hash": "1e2dd6ecabac15151c6861d9dca6dac40aa5a449cf7a6f4603156d93a66dc07d",
+  "dataset_path": "data/qfactor_dataset.csv",
+  "feature_selection": {
+    "min_cross_sectional_std_quantile": 0.25,
+    "mode": "cross_sectional_aware"
+  },
+  "max_splits": 4,
+  "purpose": "inference-only IBM Quantum hardware robustness audit",
+  "qnn_architecture": {
+    "ansatz": "one StronglyEntanglingLayers layer",
+    "encoding": "RY angle encoding",
+    "feature_count": 4,
+    "framework": "PennyLane training, Qiskit hardware export",
+    "hardware_mode": "inference only",
+    "n_qubits": 4,
+    "observable": "PauliZ on qubit 0 plus classical bias",
+    "training_mode": "analytic default.qubit"
+  },
+  "qnn_models": [
+    {
+      "best_validation_loss": 0.7180012297611662,
+      "bias": -0.4236579695998152,
+      "epochs_ran": 10,
+      "model_id": "split_00_2018-12__seed_42",
+      "n_layers": 1,
+      "n_qubits": 4,
+      "samples": [
+        {
+          "analytic_score": -0.6197011641087729,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0003958434627452,
+          "feature_values": [
+            -2.190497077747381,
+            -2.197287158830197,
+            1.115896086503062,
+            -0.27981787106516753
+          ],
+          "forward_return_5d": -0.0113657635562893,
+          "is_synthetic": false,
+          "label": null,
+          "sample_index": 0,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLB"
+        },
+        {
+          "analytic_score": -0.5853468695667691,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0166006693871235,
+          "feature_values": [
+            -1.714076197913755,
+            -2.1633175015642694,
+            -0.21175115435395592,
+            -0.23906084926055057
+          ],
+          "forward_return_5d": 0.0048390623680889,
+          "is_synthetic": false,
+          "label": 1.0,
+          "sample_index": 1,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLC"
+        },
+        {
+          "analytic_score": -0.8620194255037645,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": -0.0191420180526517,
+          "feature_values": [
+            -0.4567002173302749,
+            -2.586408889707622,
+            0.5509251415699987,
+            -0.7466887242465141
+          ],
+          "forward_return_5d": -0.0309036250716863,
+          "is_synthetic": false,
+          "label": 0.0,
+          "sample_index": 2,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLE"
+        },
+        {
+          "analytic_score": -0.801217047491378,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": -0.0228860986250877,
+          "feature_values": [
+            -1.728451228419983,
+            -2.394564811197687,
+            0.4608342115101183,
+            -0.5165129167690956
+          ],
+          "forward_return_5d": -0.0346477056441223,
+          "is_synthetic": false,
+          "label": 0.0,
+          "sample_index": 3,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLF"
+        },
+        {
+          "analytic_score": -0.626065860087772,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": -0.0026435378309224,
+          "feature_values": [
+            -2.403526618405636,
+            -2.157172449769566,
+            0.28460631784488144,
+            -0.2316879750502934
+          ],
+          "forward_return_5d": -0.014405144849957,
+          "is_synthetic": false,
+          "label": null,
+          "sample_index": 4,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLI"
+        },
+        {
+          "analytic_score": -0.843348106610283,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0112972689728284,
+          "feature_values": [
+            -3.239617313685812,
+            -2.738032169633763,
+            0.29667434921664787,
+            -0.9286073487901757
+          ],
+          "forward_return_5d": -0.0004643380462061,
+          "is_synthetic": false,
+          "label": 1.0,
+          "sample_index": 5,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLK"
+        },
+        {
+          "analytic_score": -0.13032996422663462,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0077408794118026,
+          "feature_values": [
+            -1.1175575121292747,
+            -0.9809188020565741,
+            0.319727613937617,
+            1.1795890123005315
+          ],
+          "forward_return_5d": -0.0040207276072319,
+          "is_synthetic": false,
+          "label": null,
+          "sample_index": 6,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLP"
+        },
+        {
+          "analytic_score": -0.861540405124539,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": -0.0041392423357015,
+          "feature_values": [
+            -1.3475583948018746,
+            0.7361930523031468,
+            0.44177664685673496,
+            3.239791290505479
+          ],
+          "forward_return_5d": -0.0159008493547361,
+          "is_synthetic": false,
+          "label": null,
+          "sample_index": 7,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLRE"
+        },
+        {
+          "analytic_score": -0.7858094564284988,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0181379344531539,
+          "feature_values": [
+            0.41793766635652324,
+            0.7365108197885214,
+            -0.10474592984185703,
+            3.240172550058047
+          ],
+          "forward_return_5d": 0.0063763274341193,
+          "is_synthetic": false,
+          "label": 1.0,
+          "sample_index": 8,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLU"
+        },
+        {
+          "analytic_score": -0.18906177216244957,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": -0.0059062432580899,
+          "feature_values": [
+            -2.3254695026695864,
+            -0.9001096757283195,
+            0.6055552615837682,
+            1.2765443421111766
+          ],
+          "forward_return_5d": -0.0176678502771245,
+          "is_synthetic": false,
+          "label": 0.0,
+          "sample_index": 9,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLV"
+        },
+        {
+          "analytic_score": -0.6697532914242824,
+          "data_source": "mktmind-qtm/data/marketmind_qml_dataset.csv",
+          "date": "2018-12-07",
+          "excess_return_5d": 0.0017004056353016,
+          "feature_values": [
+            -2.7414476849077465,
+            -2.203376574898154,
+            0.5443571911752992,
+            -0.28712399315866755
+          ],
+          "forward_return_5d": -0.010061201383733,
+          "is_synthetic": false,
+          "label": null,
+          "sample_index": 10,
+          "spy_forward_return_5d": -0.0117616070190346,
+          "ticker": "XLY"
+        }
+      ],
+      "seed": 42,
+      "selected_features": [
+        "ret_1d",
+        "ret_20d",
+        "volume_ratio_20d",
+        "relative_strength_20d"
+      ],
+      "split_id": "split_00_2018-12",
+      "test_rows": 44,
+      "train_rows": 216,
+      "trainable_parameter_count": 13,
+      "validation_rows": 30,
+      "weights": [
+        [
+          [
+            0.015235853989629369,
+            -0.05199920530589946,
+            0.037522559792284214
+          ],
+          [
+            0.30844955520445183,
+            0.3853675544662994,
+            -0.06510897534317117
+          ],
+          [
+            0.3101904572055736,
+            -0.5138206426007411,
+            -0.0008400578715365498
+          ],
+          [
+            0.6385237671412587,
+            0.014581050194469355,
+            0.03888959677114912
+          ]
+        ]
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "source_config_path": "configs/cross_sectional_mvp.yaml",
+  "split_audit_rows": [
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 36,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_00_2018-12",
+      "test_end": "2018-12-31",
+      "test_start": "2018-12-07",
+      "train_end": "2018-10-10",
+      "train_last_forward_end": "2018-10-17",
+      "train_purge_trading_days": 5,
+      "train_start": "2018-01-31",
+      "validation_end": "2018-11-21",
+      "validation_last_forward_end": "2018-11-29",
+      "validation_purge_trading_days": 6,
+      "validation_start": "2018-10-24"
+    },
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 40,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_01_2019-01",
+      "test_end": "2019-01-30",
+      "test_start": "2019-01-08",
+      "train_end": "2018-11-07",
+      "train_last_forward_end": "2018-11-14",
+      "train_purge_trading_days": 5,
+      "train_start": "2018-01-31",
+      "validation_end": "2018-12-21",
+      "validation_last_forward_end": "2018-12-31",
+      "validation_purge_trading_days": 6,
+      "validation_start": "2018-11-21"
+    },
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 44,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_02_2019-02",
+      "test_end": "2019-02-28",
+      "test_start": "2019-02-06",
+      "train_end": "2018-12-07",
+      "train_last_forward_end": "2018-12-14",
+      "train_purge_trading_days": 5,
+      "train_start": "2018-01-31",
+      "validation_end": "2019-01-23",
+      "validation_last_forward_end": "2019-01-30",
+      "validation_purge_trading_days": 5,
+      "validation_start": "2018-12-21"
+    },
+    {
+      "num_test_dates": 4,
+      "num_train_dates": 48,
+      "num_validation_dates": 5,
+      "purge_gap_days": 7,
+      "purge_trading_days_required": 5,
+      "split_id": "split_03_2019-03",
+      "test_end": "2019-03-28",
+      "test_start": "2019-03-07",
+      "train_end": "2019-01-08",
+      "train_last_forward_end": "2019-01-15",
+      "train_purge_trading_days": 6,
+      "train_start": "2018-01-31",
+      "validation_end": "2019-02-21",
+      "validation_last_forward_end": "2019-02-28",
+      "validation_purge_trading_days": 5,
+      "validation_start": "2019-01-23"
+    }
+  ]
+}

@@ -17,6 +17,8 @@ This checklist maps the paper's main claims to the generated artifacts that supp
 | Cross-sectional-aware selection removed the collapse. | `results_cross_sectional_mvp/qnn_failure_audit.csv` | QNN constant-score groups equal `0` in the cross-sectional-aware MVP run. |
 | Cross-sectional-aware selection did not create a robust QNN ranking signal. | `results/experimental_variant_comparison.csv` | QNN rank IC remains negative (`-0.0494`) and precision@3 remains near random (`0.2708` vs random `3 / 11 = 0.2727`). |
 | No QNN net alpha versus SPY survived costs. | `results/experimental_variant_comparison.csv` | QNN alpha vs SPY after costs is negative in both variants (`-0.0004 -> -0.0006`). |
+| IBM hardware execution is a robustness audit, not a performance claim. | `results_hardware/hardware_summary.md`, `results_hardware/hardware_run_manifest.json`, `results_hardware/ibm_hardware_scores.csv` | Frozen-QNN hardware inference used `ibm_rensselaer`, 11 samples, 100 shots, optimization/resilience level 0, and reports score drift plus ranking instability. |
+| The first IBM Runtime attempt exposed an execution failure mode. | `results_hardware/hardware_run_manifest.json`, `results_hardware/hardware_summary.md` | The failed batched optimization-level-1 attempt is documented with IBM HAL error `9604`; the conservative optimization-level-0 run succeeded. |
 | Stale full-run outputs are excluded from current paper conclusions. | `results/experimental_variant_comparison.csv` | Comparison rows come only from current-schema result directories and have known feature-selection modes plus nonzero selected-feature rows. |
 
 ## Reviewer Questions To Check
@@ -27,8 +29,9 @@ This checklist maps the paper's main claims to the generated artifacts that supp
 - Are undefined metrics reported as `NaN` instead of being hidden?
 - Is the QNN failure mode visible in diagnostics rather than patched away?
 - Does the paper avoid interpreting collapse removal as quantum advantage?
+- Does the IBM hardware section stay inference-only and avoid treating hardware noise as finance-signal validation?
 - Are all figure references relative repo paths?
-- Do limitations explicitly state 4 MVP splits, one seed, no real hardware run, no statistical-significance claim, no quantum advantage, and no trading-edge claim?
+- Do limitations explicitly state 4 MVP splits, one seed, only a small inference-only hardware audit, no statistical-significance claim, no quantum advantage, and no trading-edge claim?
 
 ## Current Supported Conclusion
 

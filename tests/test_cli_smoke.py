@@ -9,6 +9,8 @@ import pandas as pd
 from qfactor_penny.make_report import _variant_comparison
 from qfactor_penny.run_benchmark import _prediction_rows
 
+LOCAL_PATH_MARKER = "/" + "Users/"
+
 
 def test_prediction_model_rank_position_is_score_rank_with_realized_rank_separate():
     frame = pd.DataFrame(
@@ -160,7 +162,7 @@ def test_end_to_end_cli_smoke(tmp_path):
         assert (results / "figures" / figure).exists()
     summary = (results / "results_summary.md").read_text(encoding="utf-8")
     assert "It does not claim quantum advantage." in summary
-    assert "/Users/" not in summary
+    assert LOCAL_PATH_MARKER not in summary
     assert str(tmp_path) not in summary
     assert "Undefined Metric Audit" in summary
     assert "Portfolio Selection Audit" in summary

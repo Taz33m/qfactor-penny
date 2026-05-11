@@ -263,7 +263,12 @@ def _portfolio_selection_audit(predictions: pd.DataFrame, portfolio: pd.DataFram
 
 
 def _read_optional_csv(path: Path) -> pd.DataFrame:
-    return pd.read_csv(path) if path.exists() else pd.DataFrame()
+    if not path.exists():
+        return pd.DataFrame()
+    try:
+        return pd.read_csv(path)
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame()
 
 
 def _read_manifest(results_dir: Path) -> dict[str, Any]:
@@ -575,13 +580,13 @@ def make_report(config: dict[str, Any], *, root: str | Path | None = None) -> Pa
     metrics = pd.read_csv(results_dir / "metrics_summary.csv")
     portfolio = pd.read_csv(results_dir / "portfolio_summary.csv")
     predictions = pd.read_csv(results_dir / "rebalance_predictions.csv")
-    diagnostics = pd.read_csv(results_dir / "quantum_diagnostics.csv")
+    diagnostics = _read_optional_csv(results_dir / "quantum_diagnostics.csv")
     split_audit = pd.read_csv(results_dir / "split_audit.csv")
     model_status = _read_optional_csv(results_dir / "model_run_status.csv")
     feature_stability = _read_optional_csv(results_dir / "feature_stability_summary.csv")
     manifest = _read_manifest(results_dir)
     prediction_audit_path = results_dir / "prediction_audit.csv"
-    prediction_audit = pd.read_csv(prediction_audit_path) if prediction_audit_path.exists() else pd.DataFrame()
+    prediction_audit = _read_optional_csv(prediction_audit_path)
     model_aggregate = _model_aggregate(metrics)
     portfolio_aggregate = _portfolio_aggregate(portfolio)
     model_status_summary = _model_run_status_summary(model_status)
