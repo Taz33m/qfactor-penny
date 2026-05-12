@@ -24,7 +24,7 @@
 
 <p align="center">
   <a href="https://youtu.be/jAKgiCHIuVY">
-    <img src="https://img.youtube.com/vi/jAKgiCHIuVY/maxresdefault.jpg" alt="QFactor-Penny demo video thumbnail" width="860" />
+    <img src="assets/qfactor-penny-demo-loop.gif" alt="QFactor-Penny demo video preview" width="860" />
   </a>
 </p>
 
