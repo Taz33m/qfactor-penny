@@ -1,0 +1,752 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QFactor-Penny README GIF</title>
+    <style>
+      :root {
+        --bg: #071210;
+        --panel: #0d1c19;
+        --panel-2: #122622;
+        --paper: #eef3e9;
+        --muted: #8da093;
+        --mint: #7fc7a6;
+        --rust: #d77768;
+        --amber: #e0a856;
+        --spy: #6d8b97;
+        --grid: rgba(127, 199, 166, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--bg);
+      }
+
+      [data-composition-id="qfactor-readme-gif"] {
+        position: relative;
+        width: 1280px;
+        height: 720px;
+        overflow: hidden;
+        color: var(--paper);
+        background:
+          radial-gradient(circle at 18% 14%, rgba(127, 199, 166, 0.18), transparent 28%),
+          radial-gradient(circle at 86% 22%, rgba(215, 119, 104, 0.13), transparent 30%),
+          linear-gradient(135deg, #071210 0%, #081713 58%, #050c0b 100%);
+        font-family: Inter, "Avenir Next", "Helvetica Neue", system-ui, sans-serif;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--grid) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+        background-size: 64px 64px;
+        mask-image: radial-gradient(circle at center, black 0%, black 62%, transparent 100%);
+        opacity: 0.7;
+      }
+
+      .noise {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.13;
+        background-image:
+          repeating-radial-gradient(circle at 12% 21%, rgba(238, 243, 233, 0.06) 0 1px, transparent 1px 6px),
+          repeating-linear-gradient(102deg, rgba(238, 243, 233, 0.025) 0 1px, transparent 1px 7px);
+        mix-blend-mode: screen;
+      }
+
+      .vignette {
+        position: absolute;
+        inset: 0;
+        box-shadow: inset 0 0 160px rgba(0, 0, 0, 0.72), inset 0 0 26px rgba(127, 199, 166, 0.18);
+        pointer-events: none;
+      }
+
+      .topline {
+        position: absolute;
+        top: 42px;
+        left: 64px;
+        right: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 20;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .mark {
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(127, 199, 166, 0.55);
+        border-radius: 50%;
+        position: relative;
+        background: rgba(7, 18, 16, 0.72);
+        box-shadow: 0 0 38px rgba(127, 199, 166, 0.16);
+      }
+
+      .mark::before,
+      .mark::after {
+        content: "";
+        position: absolute;
+        left: 11px;
+        right: 11px;
+        height: 4px;
+        background: var(--paper);
+        opacity: 0.82;
+      }
+
+      .mark::before {
+        top: 14px;
+        box-shadow: 0 8px 0 var(--paper);
+      }
+
+      .mark::after {
+        bottom: 8px;
+        width: 16px;
+        background: var(--rust);
+      }
+
+      .brand-copy {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+      }
+
+      .brand-title {
+        font-weight: 760;
+        font-size: 25px;
+        letter-spacing: 0;
+      }
+
+      .brand-subtitle {
+        margin-top: 7px;
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .spy-lane {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border: 1px solid rgba(109, 139, 151, 0.42);
+        border-radius: 999px;
+        background: rgba(13, 28, 25, 0.62);
+        color: var(--spy);
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 15px;
+      }
+
+      .headline {
+        position: absolute;
+        left: 78px;
+        top: 135px;
+        width: 720px;
+        z-index: 8;
+      }
+
+      .eyebrow {
+        color: var(--mint);
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 17px;
+        margin-bottom: 14px;
+      }
+
+      .question {
+        font-size: 53px;
+        line-height: 0.98;
+        letter-spacing: -1.8px;
+        font-weight: 780;
+        max-width: 720px;
+      }
+
+      .question strong {
+        color: var(--rust);
+        font-weight: 780;
+      }
+
+      .subcopy {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 23px;
+      }
+
+      .track {
+        position: absolute;
+        left: 78px;
+        right: 78px;
+        bottom: 92px;
+        height: 136px;
+        z-index: 12;
+      }
+
+      .start-line {
+        position: absolute;
+        left: 0;
+        top: 14px;
+        width: 5px;
+        height: 108px;
+        background: repeating-linear-gradient(to bottom, var(--paper) 0 8px, transparent 8px 16px);
+        opacity: 0.72;
+      }
+
+      .ticker-chip {
+        position: absolute;
+        top: 42px;
+        width: 82px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(127, 199, 166, 0.52);
+        border-radius: 12px;
+        background: rgba(12, 31, 27, 0.88);
+        color: var(--paper);
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 20px;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+        will-change: transform, opacity;
+      }
+
+      .qnn-stage {
+        position: absolute;
+        left: 78px;
+        top: 222px;
+        width: 476px;
+        height: 270px;
+        z-index: 10;
+      }
+
+      .qnn-card {
+        position: absolute;
+        inset: 0;
+        border: 1px solid rgba(127, 199, 166, 0.44);
+        border-radius: 24px;
+        background: rgba(13, 28, 25, 0.8);
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.35), inset 0 0 54px rgba(127, 199, 166, 0.06);
+        overflow: hidden;
+      }
+
+      .qnn-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent, rgba(127, 199, 166, 0.12), transparent);
+        transform: translateX(-100%);
+      }
+
+      .qnn-title {
+        position: absolute;
+        left: 32px;
+        top: 28px;
+        font-weight: 760;
+        font-size: 26px;
+      }
+
+      .qnn-flow {
+        position: absolute;
+        left: 32px;
+        right: 32px;
+        top: 104px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        color: var(--muted);
+        font-size: 18px;
+      }
+
+      .flow-node {
+        padding: 13px 15px;
+        border: 1px solid rgba(127, 199, 166, 0.35);
+        border-radius: 12px;
+        background: rgba(7, 18, 16, 0.66);
+      }
+
+      .arrow {
+        width: 42px;
+        height: 1px;
+        background: rgba(127, 199, 166, 0.6);
+        position: relative;
+      }
+
+      .arrow::after {
+        content: "";
+        position: absolute;
+        right: -1px;
+        top: -4px;
+        border-left: 8px solid rgba(127, 199, 166, 0.7);
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+      }
+
+      .qubits {
+        position: absolute;
+        left: 126px;
+        bottom: 42px;
+        width: 222px;
+        height: 70px;
+      }
+
+      .qubit {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        border: 2px solid var(--mint);
+        border-radius: 50%;
+        background: rgba(7, 18, 16, 0.8);
+        box-shadow: 0 0 24px rgba(127, 199, 166, 0.18);
+      }
+
+      .qubit:nth-child(1) {
+        left: 0;
+        top: 22px;
+      }
+      .qubit:nth-child(2) {
+        left: 66px;
+        top: 0;
+      }
+      .qubit:nth-child(3) {
+        left: 132px;
+        top: 36px;
+      }
+      .qubit:nth-child(4) {
+        left: 198px;
+        top: 13px;
+      }
+
+      .pulse {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        background: var(--mint);
+        box-shadow: 0 0 28px rgba(127, 199, 166, 0.7);
+        left: 534px;
+        top: 362px;
+        z-index: 16;
+      }
+
+      .bars {
+        position: absolute;
+        right: 90px;
+        top: 214px;
+        width: 530px;
+        height: 330px;
+        z-index: 11;
+      }
+
+      .bars-title {
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 720;
+        font-size: 27px;
+      }
+
+      .bars-axis {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 58px;
+        height: 1px;
+        background: rgba(238, 243, 233, 0.18);
+      }
+
+      .bar-wrap {
+        position: absolute;
+        bottom: 58px;
+        width: 32px;
+        height: 210px;
+      }
+
+      .bar {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 9px 9px 3px 3px;
+        background: linear-gradient(180deg, var(--mint), rgba(127, 199, 166, 0.54));
+        transform-origin: bottom center;
+        box-shadow: 0 0 28px rgba(127, 199, 166, 0.16);
+        will-change: transform, background-color;
+      }
+
+      .bar-label {
+        position: absolute;
+        left: 50%;
+        bottom: -31px;
+        transform: translateX(-50%);
+        color: var(--muted);
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 13px;
+      }
+
+      .calendar {
+        position: absolute;
+        left: 86px;
+        top: 142px;
+        width: 520px;
+        height: 410px;
+        z-index: 18;
+      }
+
+      .calendar-title {
+        font-weight: 760;
+        font-size: 28px;
+        margin-bottom: 18px;
+      }
+
+      .feature-row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+
+      .feature-chip {
+        padding: 10px 13px;
+        border-radius: 999px;
+        border: 1px solid rgba(224, 168, 86, 0.55);
+        background: rgba(65, 45, 21, 0.76);
+        color: var(--amber);
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 15px;
+      }
+
+      .matrix {
+        position: relative;
+        width: 470px;
+        height: 244px;
+        border: 1px solid rgba(224, 168, 86, 0.42);
+        border-radius: 18px;
+        background: rgba(14, 23, 18, 0.83);
+        box-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+        overflow: hidden;
+      }
+
+      .matrix-label {
+        position: absolute;
+        left: 18px;
+        top: 15px;
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      .band {
+        position: absolute;
+        top: 52px;
+        bottom: 20px;
+        width: 108px;
+        border-radius: 9px;
+        background: repeating-linear-gradient(
+          to bottom,
+          rgba(224, 168, 86, 0.84) 0 10px,
+          rgba(224, 168, 86, 0.42) 10px 15px
+        );
+        box-shadow: inset 0 0 0 1px rgba(7, 18, 16, 0.5);
+        transform-origin: top center;
+      }
+
+      .band:nth-child(2) {
+        left: 42px;
+      }
+      .band:nth-child(3) {
+        left: 180px;
+      }
+      .band:nth-child(4) {
+        left: 318px;
+      }
+
+      .failure-note {
+        margin-top: 16px;
+        color: var(--rust);
+        font-size: 26px;
+        font-weight: 760;
+      }
+
+      .lesson {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        z-index: 30;
+        text-align: center;
+        pointer-events: none;
+      }
+
+      .lesson-card {
+        width: 900px;
+        padding: 48px 56px;
+        border: 1px solid rgba(238, 243, 233, 0.22);
+        border-radius: 30px;
+        background: rgba(7, 18, 16, 0.98);
+        box-shadow: 0 44px 160px rgba(0, 0, 0, 0.78), inset 0 0 70px rgba(127, 199, 166, 0.08);
+        backdrop-filter: blur(12px);
+      }
+
+      .lesson-main {
+        font-size: 58px;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -1.4px;
+      }
+
+      .lesson-main span {
+        color: var(--rust);
+      }
+
+      .lesson-sub {
+        margin-top: 20px;
+        color: var(--muted);
+        font-size: 23px;
+      }
+
+      .hardware-proof {
+        position: absolute;
+        left: 50%;
+        top: 548px;
+        z-index: 28;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 13px 18px;
+        border: 1px solid rgba(109, 139, 151, 0.5);
+        border-radius: 999px;
+        background: rgba(7, 18, 16, 0.88);
+        color: var(--paper);
+        box-shadow: 0 22px 72px rgba(0, 0, 0, 0.42), inset 0 0 38px rgba(109, 139, 151, 0.1);
+        transform: translateX(-50%);
+        font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+      }
+
+      .hardware-dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 999px;
+        background: var(--spy);
+        box-shadow: 0 0 24px rgba(109, 139, 151, 0.78);
+      }
+
+      .hardware-label {
+        font-size: 17px;
+        color: var(--muted);
+      }
+
+      .hardware-name {
+        font-size: 19px;
+        color: var(--paper);
+      }
+
+      .wipe {
+        position: absolute;
+        inset: 0;
+        z-index: 29;
+        background: linear-gradient(90deg, transparent, rgba(238, 243, 233, 0.08), transparent);
+        transform: translateX(-110%);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-composition-id="qfactor-readme-gif" data-width="1280" data-height="720" data-duration="8.4">
+      <div class="grid"></div>
+      <div class="noise"></div>
+      <div class="vignette"></div>
+
+      <div class="topline">
+        <div class="brand">
+          <div class="mark"></div>
+          <div class="brand-copy">
+            <div class="brand-title">QFactor-Penny</div>
+            <div class="brand-subtitle">leakage-aware QML benchmark</div>
+          </div>
+        </div>
+        <div class="spy-lane">SPY = benchmark only</div>
+      </div>
+
+      <section class="headline">
+        <div class="eyebrow">failure-mode benchmark</div>
+        <div class="question">Can a tiny QNN rank <strong>market sectors?</strong></div>
+        <div class="subcopy">11 ETFs. Five trading days. No leakage.</div>
+      </section>
+
+      <div class="track">
+        <div class="start-line"></div>
+        <div class="ticker-chip">XLB</div>
+        <div class="ticker-chip">XLC</div>
+        <div class="ticker-chip">XLE</div>
+        <div class="ticker-chip">XLF</div>
+        <div class="ticker-chip">XLI</div>
+        <div class="ticker-chip">XLK</div>
+        <div class="ticker-chip">XLP</div>
+        <div class="ticker-chip">XLRE</div>
+        <div class="ticker-chip">XLU</div>
+        <div class="ticker-chip">XLV</div>
+        <div class="ticker-chip">XLY</div>
+      </div>
+
+      <section class="qnn-stage">
+        <div class="qnn-card">
+          <div class="qnn-title">small QNN scorer</div>
+          <div class="qnn-flow">
+            <div class="flow-node">4 features</div>
+            <div class="arrow"></div>
+            <div class="flow-node">4 qubits</div>
+            <div class="arrow"></div>
+            <div class="flow-node">score</div>
+          </div>
+          <div class="qubits">
+            <div class="qubit"></div>
+            <div class="qubit"></div>
+            <div class="qubit"></div>
+            <div class="qubit"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="pulse"></div>
+
+      <section class="bars">
+        <div class="bars-title">QNN sector scores</div>
+        <div class="bars-axis"></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLB</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLC</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLE</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLF</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLI</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLK</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLP</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLRE</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLU</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLV</div></div>
+        <div class="bar-wrap"><div class="bar"></div><div class="bar-label">XLY</div></div>
+      </section>
+
+      <section class="calendar">
+        <div class="calendar-title">calendar-heavy inputs</div>
+        <div class="feature-row">
+          <div class="feature-chip">month_cos</div>
+          <div class="feature-chip">weekday_cos</div>
+          <div class="feature-chip">month_sin</div>
+        </div>
+        <div class="matrix">
+          <div class="matrix-label">same date -> same sector value</div>
+          <div class="band"></div>
+          <div class="band"></div>
+          <div class="band"></div>
+        </div>
+        <div class="failure-note">constant-score collapse</div>
+      </section>
+
+      <div class="wipe"></div>
+
+      <div class="hardware-proof">
+        <div class="hardware-dot"></div>
+        <div class="hardware-label">Tested on</div>
+        <div class="hardware-name">IBM Quantum System One</div>
+      </div>
+
+      <section class="lesson">
+        <div class="lesson-card">
+          <div class="lesson-main">Removing collapse <span>≠</span> finding signal</div>
+          <div class="lesson-sub">A cleaner diagnostic is not a trading edge.</div>
+        </div>
+      </section>
+    </div>
+
+    <script src="vendor/gsap.min.js"></script>
+    <script>
+      const DURATION = 8.4;
+      window.__timelines = window.__timelines || {};
+      gsap.defaults({ ease: "power2.out", duration: 0.55 });
+
+      const chipX = [38, 136, 234, 332, 430, 528, 626, 724, 822, 920, 1018];
+      gsap.set(".ticker-chip", {
+        x: (i) => chipX[i],
+        y: 0,
+        autoAlpha: 1,
+      });
+      gsap.set(".bar-wrap", { x: (i) => i * 46 });
+      gsap.set(".bar", {
+        scaleY: (i) => [0.48, 0.73, 0.36, 0.62, 0.87, 0.42, 0.93, 0.54, 0.68, 0.89, 0.51][i],
+      });
+      gsap.set([".qnn-stage", ".pulse", ".bars", ".calendar", ".lesson", ".hardware-proof"], { autoAlpha: 0 });
+
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+      tl.addLabel("question", 0);
+      tl.from(".brand", { y: -18, autoAlpha: 0, duration: 0.65, ease: "expo.out" }, 0.08);
+      tl.from(".spy-lane", { y: -18, autoAlpha: 0, duration: 0.58, ease: "power2.out" }, 0.25);
+      tl.from(".eyebrow", { clipPath: "inset(0 100% 0 0)", duration: 0.52, ease: "power3.inOut" }, 0.18);
+      tl.from(".question", { y: 34, autoAlpha: 0, duration: 0.76, ease: "expo.out" }, 0.32);
+      tl.from(".subcopy", { y: 18, autoAlpha: 0, duration: 0.56, ease: "power2.out" }, 0.72);
+      tl.from(".start-line", { scaleY: 0, transformOrigin: "top center", duration: 0.55, ease: "power3.inOut" }, 0.74);
+      tl.from(".ticker-chip", { x: -90, y: 38, autoAlpha: 0, scale: 0.84, duration: 0.72, stagger: 0.045, ease: "back.out(1.35)" }, 0.9);
+
+      tl.addLabel("score", 1.55);
+      tl.to(".headline", { scale: 0.62, x: -54, y: -70, autoAlpha: 0.46, duration: 1.05, ease: "power3.inOut" }, "score");
+      tl.to(".track", { y: -438, scale: 0.64, autoAlpha: 0.46, duration: 1.05, ease: "power3.inOut" }, "score");
+      tl.to(".qnn-stage", { autoAlpha: 1, duration: 0.2 }, "score+=0.16");
+      tl.from(".qnn-card", { y: 46, scale: 0.94, autoAlpha: 0, duration: 0.72, ease: "expo.out" }, "score+=0.2");
+      tl.from(".flow-node", { y: 18, autoAlpha: 0, duration: 0.42, stagger: 0.09, ease: "power2.out" }, "score+=0.56");
+      tl.from(".arrow", { scaleX: 0, transformOrigin: "left center", duration: 0.45, stagger: 0.09, ease: "power3.inOut" }, "score+=0.7");
+      tl.from(".qubit", { scale: 0, rotation: -45, duration: 0.55, stagger: 0.08, ease: "back.out(1.5)" }, "score+=0.85");
+      tl.to(".bars", { autoAlpha: 1, duration: 0.2 }, "score+=0.38");
+      tl.from(".bars-title", { y: 22, autoAlpha: 0, duration: 0.45, ease: "power2.out" }, "score+=0.48");
+      tl.from(".bars-axis", { scaleX: 0, transformOrigin: "left center", duration: 0.46, ease: "power3.inOut" }, "score+=0.56");
+      tl.from(".bar-wrap", { y: 24, autoAlpha: 0, duration: 0.52, stagger: 0.035, ease: "power2.out" }, "score+=0.7");
+      tl.to(".pulse", { autoAlpha: 1, duration: 0.08 }, "score+=1.05");
+      tl.fromTo(".pulse", { x: 0, scale: 0.75 }, { x: 410, scale: 1.35, duration: 0.9, ease: "power2.inOut" }, "score+=1.06");
+      tl.to(".pulse", { autoAlpha: 0, scale: 0.4, duration: 0.25 }, "score+=1.68");
+
+      tl.addLabel("failure", 3.65);
+      tl.to(".calendar", { autoAlpha: 1, duration: 0.12 }, "failure");
+      tl.to(".headline", { autoAlpha: 0, y: -120, duration: 0.62, ease: "power2.out" }, "failure-=0.42");
+      tl.to(".track", { autoAlpha: 0.18, duration: 0.62, ease: "power2.out" }, "failure-=0.35");
+      tl.to(".qnn-stage", { scale: 0.88, autoAlpha: 0.72, duration: 0.7, ease: "power2.out" }, "failure-=0.08");
+      tl.from(".calendar-title", { y: 26, autoAlpha: 0, duration: 0.72, ease: "expo.out" }, "failure+=0.05");
+      tl.from(".feature-chip", { y: -30, autoAlpha: 0, scale: 0.9, duration: 0.68, stagger: 0.14, ease: "back.out(1.2)" }, "failure+=0.38");
+      tl.from(".matrix", { y: 36, autoAlpha: 0, scale: 0.96, duration: 0.78, ease: "power3.out" }, "failure+=0.9");
+      tl.from(".band", { scaleY: 0, transformOrigin: "top center", duration: 0.8, stagger: 0.12, ease: "power3.inOut" }, "failure+=1.22");
+      tl.to(".bar", { scaleY: 0.53, backgroundColor: "#d77768", duration: 1.25, stagger: { amount: 0.46, from: "center" }, ease: "power3.inOut" }, "failure+=1.48");
+      tl.to(".bars-title", { color: "#d77768", duration: 0.7 }, "failure+=1.58");
+      tl.from(".failure-note", { y: 22, autoAlpha: 0, duration: 0.68, ease: "power2.out" }, "failure+=1.98");
+
+      tl.addLabel("lesson", 6.15);
+      tl.fromTo(".hardware-proof", { y: 18, scale: 0.96, autoAlpha: 0 }, { y: 0, scale: 1, autoAlpha: 1, duration: 0.58, ease: "power2.out" }, "lesson-=0.74");
+      tl.to(".hardware-proof", { autoAlpha: 0, y: -12, duration: 0.34, ease: "power2.in" }, "lesson-=0.08");
+      tl.to(".wipe", { x: "220%", duration: 0.72, ease: "power3.inOut" }, "lesson-=0.16");
+      tl.to([".headline", ".track", ".qnn-stage", ".calendar"], { autoAlpha: 0, duration: 0.5, ease: "power2.out" }, "lesson-=0.06");
+      tl.to(".bars", { autoAlpha: 0.14, scale: 0.96, duration: 0.5, ease: "power2.out" }, "lesson-=0.06");
+      tl.to(".lesson", { autoAlpha: 1, duration: 0.12 }, "lesson+=0.08");
+      tl.from(".lesson-card", { y: 42, scale: 0.94, autoAlpha: 0, duration: 0.92, ease: "expo.out" }, "lesson+=0.1");
+      tl.from(".lesson-main", { y: 20, autoAlpha: 0, duration: 0.76, ease: "power2.out" }, "lesson+=0.42");
+      tl.from(".lesson-sub", { y: 18, autoAlpha: 0, duration: 0.58, ease: "power2.out" }, "lesson+=0.86");
+      tl.to("[data-composition-id='qfactor-readme-gif']", { backgroundColor: "#050c0b", duration: 0.45, ease: "power2.in" }, DURATION - 0.45);
+
+      window.__timelines["qfactor-readme-gif"] = tl;
+
+      const params = new URLSearchParams(window.location.search);
+      const seek = Number(params.get("t") || "0.15");
+      tl.time(Math.min(Math.max(seek, 0), DURATION), false);
+    </script>
+  </body>
+</html>
